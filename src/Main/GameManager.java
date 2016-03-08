@@ -3,7 +3,7 @@ package Main;
 public class GameManager {
 	
 	private ChessBoard board;
-	
+	//test
 	public GameManager(){
 		
 	}
