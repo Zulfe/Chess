@@ -98,6 +98,10 @@ public class ChessBoard {
 				System.out.println(chessBoard[i][k]);
 	}
 	
+	public void sendBoardToGUI(){
+		GUI.setBoard(chessBoard);
+	}
+	
 	//BOARD LAYOUT
 	//[BR1][BK1][BB1][BQu][BKi][BB2][BK2][BR2]
 	//[BP1][BP2][BP3][BP4][BP5][BP6][BP7][BP8]

@@ -7,15 +7,11 @@ public class Piece {
 	public String ID;
 	protected boolean isWhite;
 	protected Coordinate currentPos;
-	private int arrayX;
-	private int arrayY;
 	
 	public Piece(String ID, boolean isWhite, char posX, char posY){
 		this.ID = ID;
 		this.isWhite = isWhite;
 		currentPos = new Coordinate(posX, posY);
-		arrayX = currentPos.getY();
-		arrayY = currentPos.getX();
 	}
 	
 	public int getX(){

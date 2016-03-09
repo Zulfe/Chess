@@ -15,12 +15,8 @@ public class GameManager {
 		board.movePiece(board.getPieceByID("WP8"), new Coordinate('A', '4'));
 		board.printBoard();
 		board.movePiece(board.getPieceByID("WP8"), new Coordinate('A', '5'));
-		board.movePiece(board.getPieceByID("WP8"), new Coordinate('A', '6'));
-		board.movePiece(board.getPieceByID("WP8"), new Coordinate('B', '7'));
 		board.printBoard();
+		board.sendBoardToGUI();
 	}
 	
-	public ChessBoard getBoard(){
-		return board;
-	}
 }
