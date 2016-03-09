@@ -2,8 +2,8 @@ package Main;
 
 public class Bishop extends Piece {
 
-	public Bishop(String ID, boolean isWhite, char posX, char posY) {
-		super(ID, isWhite, posX, posY);
+	public Bishop(String ID, String icon, boolean isWhite, char posX, char posY) {
+		super(ID, icon, isWhite, posX, posY);
 	}
 	
 }

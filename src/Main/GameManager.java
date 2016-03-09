@@ -3,20 +3,21 @@ package Main;
 public class GameManager {
 	
 	private ChessBoard board;
-	//test
+	private GUI gui;
+	
 	public GameManager(){
 		
 	}
 	
 	public void startGame(){
 		board = new ChessBoard();
+		gui = new GUI();
 		board.build();
 		board.printBoard();
-		board.movePiece(board.getPieceByID("WP8"), new Coordinate('A', '4'));
-		board.printBoard();
-		board.movePiece(board.getPieceByID("WP8"), new Coordinate('A', '5'));
-		board.printBoard();
 		board.sendBoardToGUI();
+		gui.initGUI();
+		board.movePiece(board.getPieceByID("WP7"), new Coordinate('B', '4'));
+		gui.updateBoard();
 	}
 	
 }

@@ -7,9 +7,11 @@ public class Piece {
 	public String ID;
 	protected boolean isWhite;
 	protected Coordinate currentPos;
+	protected String icon;
 	
-	public Piece(String ID, boolean isWhite, char posX, char posY){
+	public Piece(String ID, String icon, boolean isWhite, char posX, char posY){
 		this.ID = ID;
+		this.icon = icon;
 		this.isWhite = isWhite;
 		currentPos = new Coordinate(posX, posY);
 	}
@@ -20,6 +22,10 @@ public class Piece {
 	
 	public int getY(){
 		return currentPos.getY();
+	}
+	
+	public String getIcon(){
+		return icon;
 	}
 	
 	public String toString(){
