@@ -18,10 +18,12 @@ public class BoardCellRenderer extends DefaultTableCellRenderer {
 
         setHorizontalAlignment(SwingConstants.CENTER);
         
+        Color darkSquare = new Color(175, 175, 175);
+        
         if(row % 2 == 0 && column % 2 == 1)
-        	setBackground(new Color(100, 100, 100));
+        	setBackground(darkSquare);
         else if(row % 2 == 1 && column % 2 == 0)
-        	setBackground(new Color(100, 100, 100));
+        	setBackground(darkSquare);
         else
         	setBackground(Color.WHITE);
         

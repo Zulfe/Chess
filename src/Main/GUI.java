@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 
+import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTable;
@@ -45,7 +46,8 @@ public class GUI {
 		}
 		gameBoard.setRowHeight(SQUARE_CELL);
 		gameBoard.setFont(new Font(Font.SERIF, Font.PLAIN, 30));
-		gameBoard.setShowGrid(false);
+		gameBoard.setBorder(BorderFactory.createEmptyBorder());
+		gameBoard.setIntercellSpacing(new Dimension(0, 0));
 		
 		//adjust the panel's look
 		gamePanel.setBackground(new Color(112, 128, 144));
