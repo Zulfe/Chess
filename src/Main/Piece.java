@@ -16,6 +16,11 @@ public class Piece {
 		currentPos = new Coordinate(posX, posY);
 	}
 	
+	//used to allow the queen to reference the movement criteria of both the rooke and the bishop
+	public Piece(){
+		
+	}
+	
 	public int getX(){
 		return currentPos.getX();
 	}

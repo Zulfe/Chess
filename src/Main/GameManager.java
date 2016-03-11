@@ -16,6 +16,9 @@ public class GameManager {
 		board.printBoard();
 		board.sendBoardToGUI();
 		gui.initGUI();
+		board.movePiece(board.getPieceByID("WP4"), new Coordinate('E', '3'));
+		board.movePiece(board.getPieceByID("WQu"), new Coordinate('F', '3'));
+		board.movePiece(board.getPieceByID("WQu"), new Coordinate('F', '5'));
 		gui.updateBoard();
 	}
 	

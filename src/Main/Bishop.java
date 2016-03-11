@@ -6,6 +6,10 @@ public class Bishop extends Piece {
 		super(ID, icon, isWhite, posX, posY);
 	}
 	
+	public Bishop(){
+		
+	}
+	
 	public boolean isMoveValid(Coordinate newPosition, Piece[][] chessBoard){
 		//if the difference in vertical position is the same as the difference in horizontal position
 		if((Math.abs(newPosition.getX() - super.currentPos.getX())) == 

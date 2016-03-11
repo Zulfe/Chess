@@ -57,8 +57,8 @@ public class ChessBoard {
 		chessBoard[7][0] = new Rooke("WR2", "♖", true, 'A', '1');
 		chessBoard[7][1] = new Knight("WK2", "♘", true, 'B', '1');
 		chessBoard[7][2] = new Bishop("WB2", "♗", true, 'C', '1');
-		chessBoard[7][3] = new Queen("WKi", "♔", true, 'D', '1');
-		chessBoard[7][4] = new King("WQu", "♕", true, 'E', '1');
+		chessBoard[7][3] = new Queen("WQu", "♕", true, 'D', '1');
+		chessBoard[7][4] = new King("WKi", "♔", true, 'E', '1');
 		chessBoard[7][5] = new Bishop("WB1", "♗", true, 'F', '1');
 		chessBoard[7][6] = new Knight("WK1", "♘", true, 'G', '1');
 		chessBoard[7][7] = new Rooke("WR1", "♖", true, 'H', '1');
