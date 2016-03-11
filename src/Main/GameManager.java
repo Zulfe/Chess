@@ -19,7 +19,12 @@ public class GameManager {
 		board.printBoard();
 		board.sendBoardToGUI();
 		gui.initGUI();
+		board.movePiece(board.getPieceByID("WK2"), new Coordinate('A', '3'));
+		board.movePiece(board.getPieceByID("WP7"), new Coordinate('B', '3'));
+		board.movePiece(board.getPieceByID("WK2"), new Coordinate('C', '4'));
+		board.movePiece(board.getPieceByID("WK2"), new Coordinate('A', '5'));
 		gui.updateBoard();
+		
 	}
 	
 }
