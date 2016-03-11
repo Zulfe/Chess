@@ -3,6 +3,9 @@ package Main;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.FontFormatException;
+import java.io.File;
+import java.io.IOException;
 
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
@@ -19,7 +22,7 @@ public class GUI {
 	private DefaultTableCellRenderer customRender = new BoardCellRenderer();
 	private static Piece[][] board;
 	
-	private final int SQUARE_CELL = 50;
+	private final int SQUARE_CELL = 80;
 	
 	
 	public GUI(){
@@ -27,7 +30,7 @@ public class GUI {
 	}
 	
 	@SuppressWarnings("serial")
-	public void initGUI(){
+	public void initGUI() throws FontFormatException, IOException{
 		//allocate the components
 		frame = new JFrame();
 		gamePanel = new JPanel();
@@ -45,7 +48,9 @@ public class GUI {
 			gameBoard.getColumnModel().getColumn(i).setCellRenderer(customRender);
 		}
 		gameBoard.setRowHeight(SQUARE_CELL);
-		gameBoard.setFont(new Font(Font.SERIF, Font.PLAIN, 30));
+		
+		
+		gameBoard.setFont(Font.createFont(Font.TRUETYPE_FONT, new File("resources/fonts/MAYAFONT.TTF")).deriveFont(Font.PLAIN, 70));
 		gameBoard.setBorder(BorderFactory.createEmptyBorder());
 		gameBoard.setIntercellSpacing(new Dimension(0, 0));
 		
@@ -59,7 +64,7 @@ public class GUI {
 		gamePanel.add(gameBoard);
 		frame.add(gamePanel);
 		
-		frame.setMinimumSize(new Dimension(500, 500));
+		frame.setMinimumSize(new Dimension(SQUARE_CELL*9, SQUARE_CELL*9));
 		frame.setVisible(true);
 	}
 	

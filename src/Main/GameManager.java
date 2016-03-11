@@ -1,5 +1,8 @@
 package Main;
 
+import java.awt.FontFormatException;
+import java.io.IOException;
+
 public class GameManager {
 	
 	private ChessBoard board;
@@ -9,16 +12,13 @@ public class GameManager {
 		
 	}
 	
-	public void startGame(){
+	public void startGame() throws FontFormatException, IOException{
 		board = new ChessBoard();
 		gui = new GUI();
 		board.build();
 		board.printBoard();
 		board.sendBoardToGUI();
 		gui.initGUI();
-		board.movePiece(board.getPieceByID("WP4"), new Coordinate('E', '3'));
-		board.movePiece(board.getPieceByID("WQu"), new Coordinate('F', '3'));
-		board.movePiece(board.getPieceByID("WQu"), new Coordinate('F', '5'));
 		gui.updateBoard();
 	}
 	
