@@ -14,6 +14,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -23,8 +24,9 @@ public class GUI implements KeyListener {
 	private JFrame frame;
 	private JPanel gamePanel;
 	private JTable gameBoard;
+	private JTextField textBox;
 	private DefaultTableCellRenderer customRender = new BoardCellRenderer();
-	private static Piece[][] board;
+	private static ChessBoard chessBoard;
 	
 	private Coordinate movePiece;
 	private Coordinate movePosition;
@@ -47,6 +49,7 @@ public class GUI implements KeyListener {
 				return false;
 			}
 		};
+		textBox = new JTextField(40);
 		
 		//adjust the chessboard's look
 		for(int i = 0; i < 8; i++){
@@ -81,6 +84,7 @@ public class GUI implements KeyListener {
 		
 		//fit everything together
 		gamePanel.add(gameBoard);
+		gamePanel.add(textBox);
 		frame.add(gamePanel);
 		
 		frame.setMinimumSize(new Dimension(SQUARE_CELL*9, SQUARE_CELL*9));
@@ -88,16 +92,16 @@ public class GUI implements KeyListener {
 	}
 	
 	public void updateBoard(){
-		for(int i = 0; i < board.length; i++)
-			for(int k = 0; k < board[i].length; k++)
-				if(board[i][k] != null)
-					gameBoard.setValueAt(board[i][k].getIcon(), i, k);
+		for(int i = 0; i < chessBoard.chessBoard.length; i++)
+			for(int k = 0; k < chessBoard.chessBoard[i].length; k++)
+				if(chessBoard.chessBoard[i][k] != null)
+					gameBoard.setValueAt(chessBoard.chessBoard[i][k].getIcon(), i, k);
 				else
 					gameBoard.setValueAt("", i, k);
 	}
 	
-	public static void setBoard(Piece[][] submitted){
-		board = submitted;
+	public static void setBoard(ChessBoard board){
+		chessBoard = board;
 	}
 
 	public Coordinate getMovePiece(){
@@ -124,6 +128,7 @@ public class GUI implements KeyListener {
 			if(movePiece == null){
 				System.out.println("Selected piece position: " + gameBoard.getSelectedRow() + ", " + gameBoard.getSelectedColumn());
 				movePiece = new Coordinate(gameBoard.getSelectedColumn(), gameBoard.getSelectedRow());
+				textBox.setText("Player has selected " + chessBoard.getPieceByPos(movePiece).ID + " at (" + movePiece.getGameX() + ", " + movePiece.getGameY() + ")");
 			} else{
 				System.out.println("Selected move position: " + gameBoard.getSelectedRow() + ", " + gameBoard.getSelectedColumn());
 				movePosition = new Coordinate(gameBoard.getSelectedColumn(), gameBoard.getSelectedRow());
