@@ -24,6 +24,11 @@ public class Coordinate {
 		this.gameY = posY;
 	}
 	
+	public Coordinate(int posX, int posY){
+		this.posX = posX;
+		this.posY = posY;
+	}
+	
 	public int interpretCoordinate(char coordinate){
 		System.out.println("Interpreting coordinate " + coordinate);
 		int numeralCoord = (int) ChessBoard.coordinateMap.get(coordinate);
@@ -49,6 +54,8 @@ public class Coordinate {
 	public char getGameY(){
 		return gameY;
 	}
+	
+	
 	
 	public String toString(){
 		return "(" + posX + ", " + posY + ")";

@@ -2,10 +2,6 @@ package Main;
 
 import java.util.HashMap;
 
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
-
-@SuppressWarnings("serial")
 public class ChessBoard {
 	
 	Piece[][] chessBoard;
@@ -73,15 +69,16 @@ public class ChessBoard {
 	}
 	
 	public void movePiece(Piece piece, Coordinate newPosition){
-		if(piece.isMoveValid(newPosition, chessBoard)){
-			Piece pieceCopy = piece;
-			chessBoard[newPosition.getY()][newPosition.getX()] = pieceCopy;
-			chessBoard[piece.getY()][piece.getX()] = null;
-			piece.updatePosition(newPosition);
-			System.out.println(piece.ID + " has been moved to " + newPosition);
-		} else{
-			System.out.println("Invalid move request for " + piece.ID);
-		}
+		if(piece != null)
+			if(piece.isMoveValid(newPosition, chessBoard)){
+				Piece pieceCopy = piece;
+				chessBoard[newPosition.getY()][newPosition.getX()] = pieceCopy;
+				chessBoard[piece.getY()][piece.getX()] = null;
+				piece.updatePosition(newPosition);
+				System.out.println(piece.ID + " has been moved to " + newPosition);
+			} else{
+				System.out.println("Invalid move request for " + piece.ID);
+			}
 	}
 	
 	public Piece getPieceByID(String ID){
@@ -90,6 +87,11 @@ public class ChessBoard {
 				if(piece != null && piece.ID == ID)
 					return piece;
 		return null;
+	}
+	
+	public Piece getPieceByPos(Coordinate position){
+		System.out.println("Getting piece at " + position);
+		return chessBoard[position.getY()][position.getX()];
 	}
 	
 	public void printBoard(){

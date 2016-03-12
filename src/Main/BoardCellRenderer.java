@@ -28,9 +28,13 @@ public class BoardCellRenderer extends DefaultTableCellRenderer {
         	setBackground(Color.WHITE);
         
         
-        if(hasFocus)
+        if(hasFocus){
         	setBorder(new MatteBorder(2, 2, 2, 2, Color.RED));
-
+        	System.out.println("hasFocus: " + row + ", " + column);
+        }
+        if(isSelected)
+        	setBorder(new MatteBorder(2, 2, 2, 2, Color.BLUE));
+        
         return this;
     }
 }
