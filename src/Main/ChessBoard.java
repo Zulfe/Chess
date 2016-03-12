@@ -101,7 +101,7 @@ public class ChessBoard {
 	}
 	
 	public void sendBoardToGUI(){
-		GUI.setBoard(chessBoard);
+		GUI.setBoard(this);
 	}
 	
 	//BOARD LAYOUT
