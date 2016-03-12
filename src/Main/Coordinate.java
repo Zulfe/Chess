@@ -27,12 +27,22 @@ public class Coordinate {
 	public Coordinate(int posX, int posY){
 		this.posX = posX;
 		this.posY = posY;
+		this.gameX = interpretIntCoordAsGame(posX, 'X');
+		this.gameY = interpretIntCoordAsGame(posY, 'Y');
 	}
 	
 	public int interpretCoordinate(char coordinate){
 		System.out.println("Interpreting coordinate " + coordinate);
 		int numeralCoord = (int) ChessBoard.coordinateMap.get(coordinate);
 		return numeralCoord;
+	}
+	
+	public char interpretIntCoordAsGame(int coordinate, char axis){
+		if(axis == 'X'){
+			return (char) (coordinate + 65);
+		} else {
+			return (char) (8 - coordinate + 48);
+		}
 	}
 	
 	//returns an integer value for the position along the x-axis
