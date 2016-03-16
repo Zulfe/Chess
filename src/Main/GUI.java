@@ -4,19 +4,16 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.FontFormatException;
-import java.awt.Point;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.File;
 import java.io.IOException;
-
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
-import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 
 public class GUI implements KeyListener {
@@ -132,6 +129,7 @@ public class GUI implements KeyListener {
 			} else{
 				System.out.println("Selected move position: " + gameBoard.getSelectedRow() + ", " + gameBoard.getSelectedColumn());
 				movePosition = new Coordinate(gameBoard.getSelectedColumn(), gameBoard.getSelectedRow());
+				textBox.setText("Player has moved " + chessBoard.getPieceByPos(movePiece).ID + " from (" + movePiece.getGameX() + ", " + movePiece.getGameY() + ") to (" + movePosition.getGameX() + ", " + movePosition.getGameY() + ")");
 				isMoveReady = true;
 			}
 		}
