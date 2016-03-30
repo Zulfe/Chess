@@ -128,7 +128,8 @@ public class GUI implements KeyListener {
 			if(movePiece == null){
 				System.out.println("Selected piece position: " + gameBoard.getSelectedRow() + ", " + gameBoard.getSelectedColumn());
 				movePiece = new Coordinate(gameBoard.getSelectedColumn(), gameBoard.getSelectedRow());
-				textBox.setText("Player has selected " + chessBoard.getPieceByPos(movePiece).ID + " at (" + movePiece.getGameX() + ", " + movePiece.getGameY() + ")");
+				if(chessBoard.getPieceByPos(movePiece) != null)
+					textBox.setText("Player has selected " + chessBoard.getPieceByPos(movePiece).ID + " at (" + movePiece.getGameX() + ", " + movePiece.getGameY() + ")");
 			} else{
 				System.out.println("Selected move position: " + gameBoard.getSelectedRow() + ", " + gameBoard.getSelectedColumn());
 				movePosition = new Coordinate(gameBoard.getSelectedColumn(), gameBoard.getSelectedRow());
