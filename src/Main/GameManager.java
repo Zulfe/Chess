@@ -1,6 +1,5 @@
 package Main;
 
-import java.awt.FontFormatException;
 import java.io.IOException;
 
 public class GameManager {

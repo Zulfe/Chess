@@ -27,7 +27,12 @@ public class ChessBoard {
 		coordinateMap.put('1', 7);
 	}
 
-	// builds new chess board where white is on bottom, black is on top
+
+	/**
+	 * Creates all of the pieces and sets them in their initial positions.
+	 * In this configuration, white pieces are on the bottom while the
+	 * black pieces are on the top.
+	 */
 	public void build(){
 		chessBoard = new Piece[8][8];
 		
@@ -68,6 +73,12 @@ public class ChessBoard {
 		chessBoard[6][7] = new Pawn("WP1", "p", true, 'H', '2');
 	}
 	
+	/**
+	 * Moves a game piece from its current position to a new position. This function
+	 * integrates the Piece isMoveValid() function. 
+	 * @param piece the Piece object that is to be moved
+	 * @param newPosition the Coordinate position where the piece is to be moved
+	 */
 	public void movePiece(Piece piece, Coordinate newPosition){
 		if(piece != null)
 			if(piece.isMoveValid(newPosition, chessBoard)){
@@ -81,6 +92,11 @@ public class ChessBoard {
 			}
 	}
 	
+	/**
+	 * Returns the Piece object for a submitted Piece ID.
+	 * @param ID The unique ID that every piece on the board has
+	 * @return The Piece object to which the specified ID is assigned
+	 */
 	public Piece getPieceByID(String ID){
 		for(Piece[] row : chessBoard)
 			for(Piece piece : row)
@@ -89,28 +105,17 @@ public class ChessBoard {
 		return null;
 	}
 	
+	/**
+	 * Returns the Piece object for a submitted Coordinate position.
+	 * @param position as specified by a Coordinate object
+	 * @return The Piece object at the Coordinate position specified
+	 */
 	public Piece getPieceByPos(Coordinate position){
 		System.out.println("Getting piece at " + position);
 		return chessBoard[position.getY()][position.getX()];
 	}
 	
-	public void printBoard(){
-		for(int i = 0; i < 8; i++)
-			for(int k = 0; k < 8; k++)
-				System.out.println(chessBoard[i][k]);
-	}
-	
 	public void sendBoardToGUI(){
 		GUI.setBoard(this);
 	}
-	
-	//BOARD LAYOUT
-	//[BR1][BK1][BB1][BQu][BKi][BB2][BK2][BR2]
-	//[BP1][BP2][BP3][BP4][BP5][BP6][BP7][BP8]
-	//[Emp][Emp][Emp][Emp][Emp][Emp][Emp][Emp]
-	//[Emp][Emp][Emp][Emp][Emp][Emp][Emp][Emp]
-	//[Emp][Emp][Emp][Emp][Emp][Emp][Emp][Emp]
-	//[Emp][Emp][Emp][Emp][Emp][Emp][Emp][Emp]
-	//[WP8][WP7][WP6][WP5][WP4][WP3][WP2][WP1]
-	//[WR2][WK2][WB2][WKi][WQu][WB1][WK1][WR1]
 }
