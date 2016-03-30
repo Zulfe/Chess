@@ -123,10 +123,11 @@ public class GUI implements KeyListener {
 	public void keyPressed(KeyEvent e) {
 		if(e.getKeyCode() == KeyEvent.VK_SPACE){
 			if(movePiece == null){
-				System.out.println("Selected piece position: " + gameBoard.getSelectedRow() + ", " + gameBoard.getSelectedColumn());
-				movePiece = new Coordinate(gameBoard.getSelectedColumn(), gameBoard.getSelectedRow());
-				if(chessBoard.getPieceByPos(movePiece) != null)
+				if(chessBoard.getPieceByPos(new Coordinate(gameBoard.getSelectedColumn(), gameBoard.getSelectedRow())) != null){
+					System.out.println("Selected piece position: " + gameBoard.getSelectedRow() + ", " + gameBoard.getSelectedColumn());
+					movePiece = new Coordinate(gameBoard.getSelectedColumn(), gameBoard.getSelectedRow());
 					textBox.setText("Player has selected " + chessBoard.getPieceByPos(movePiece).ID + " at (" + movePiece.getGameX() + ", " + movePiece.getGameY() + ")");
+				}
 			} else{
 				System.out.println("Selected move position: " + gameBoard.getSelectedRow() + ", " + gameBoard.getSelectedColumn());
 				movePosition = new Coordinate(gameBoard.getSelectedColumn(), gameBoard.getSelectedRow());
@@ -134,7 +135,6 @@ public class GUI implements KeyListener {
 				isMoveReady = true;
 			}
 		}
-		
 	}
 
 	@Override
