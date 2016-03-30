@@ -25,8 +25,5 @@ public class GameManager {
 				gui.updateBoard();
 			}
 		}
-		
-		
-	}
-	
+	}	
 }
