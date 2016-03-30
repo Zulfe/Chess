@@ -13,9 +13,8 @@ public class GameManager {
 	
 	public void startGame() throws IOException{
 		board = new ChessBoard();
-		gui = new GUI();
+		gui = new GUI(board);
 		board.build();
-		board.sendBoardToGUI();
 		gui.initGUI();
 		while(true){
 			if(gui.isMoveReady()){

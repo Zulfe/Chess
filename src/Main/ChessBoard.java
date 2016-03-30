@@ -114,8 +114,4 @@ public class ChessBoard {
 		System.out.println("Getting piece at " + position);
 		return chessBoard[position.getY()][position.getX()];
 	}
-	
-	public void sendBoardToGUI(){
-		GUI.setBoard(this);
-	}
 }

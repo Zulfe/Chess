@@ -8,7 +8,9 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.File;
 import java.io.IOException;
+
 import javax.swing.BorderFactory;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTable;
@@ -22,8 +24,9 @@ public class GUI implements KeyListener {
 	private JPanel gamePanel;
 	private JTable gameBoard;
 	private JTextField textBox;
+	private JButton multiplayer;
 	private DefaultTableCellRenderer customRender = new BoardCellRenderer();
-	private static ChessBoard chessBoard;
+	private ChessBoard chessBoard;
 	
 	private Coordinate movePiece;
 	private Coordinate movePosition;
@@ -32,8 +35,8 @@ public class GUI implements KeyListener {
 	private final int SQUARE_CELL = 80;
 	
 	
-	public GUI(){
-
+	public GUI(ChessBoard board){
+		chessBoard = board;
 	}
 	
 	@SuppressWarnings("serial")
@@ -95,10 +98,6 @@ public class GUI implements KeyListener {
 					gameBoard.setValueAt(chessBoard.chessBoard[i][k].getIcon(), i, k);
 				else
 					gameBoard.setValueAt("", i, k);
-	}
-	
-	public static void setBoard(ChessBoard board){
-		chessBoard = board;
 	}
 
 	public Coordinate getMovePiece(){
