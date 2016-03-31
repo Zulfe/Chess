@@ -4,27 +4,35 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.FontFormatException;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.File;
 import java.io.IOException;
 
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableCellRenderer;
 
-public class GUI implements KeyListener {
+public class GUI implements KeyListener, ActionListener {
 	
 	private JFrame frame;
 	private JPanel gamePanel;
 	private JTable gameBoard;
 	private JTextField textBox;
+
 	private JButton multiplayer;
+	public JButton searchServers;
+	private JLabel loading;
+	
 	private DefaultTableCellRenderer customRender = new BoardCellRenderer();
 	private ChessBoard chessBoard;
 	
@@ -50,6 +58,7 @@ public class GUI implements KeyListener {
 			}
 		};
 		textBox = new JTextField(40);
+		multiplayer = new JButton("Multiplayer");
 		
 		//adjust the chessboard's look
 		for(int i = 0; i < 8; i++){
@@ -59,8 +68,10 @@ public class GUI implements KeyListener {
 			gameBoard.getColumnModel().getColumn(i).setCellRenderer(customRender);
 		}
 		gameBoard.setRowHeight(SQUARE_CELL);
+		gameBoard.setBorder(BorderFactory.createEmptyBorder());
+		gameBoard.setIntercellSpacing(new Dimension(0, 0));
 		
-		
+		//change the font to the piece font
 		try {
 			gameBoard.setFont(Font.createFont(Font.TRUETYPE_FONT, new File("resources/fonts/MAYAFONT.TTF")).deriveFont(Font.PLAIN, 70));
 		} catch (FontFormatException e) {
@@ -70,11 +81,11 @@ public class GUI implements KeyListener {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		gameBoard.setBorder(BorderFactory.createEmptyBorder());
-		gameBoard.setIntercellSpacing(new Dimension(0, 0));
 		
 		gameBoard.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		gameBoard.addKeyListener(this);
+		
+		multiplayer.addActionListener(this);
 		
 		//adjust the panel's look
 		gamePanel.setBackground(new Color(112, 128, 144));
@@ -85,11 +96,37 @@ public class GUI implements KeyListener {
 		//fit everything together
 		gamePanel.add(gameBoard);
 		gamePanel.add(textBox);
+		gamePanel.add(multiplayer);
 		frame.add(gamePanel);
 		
 		frame.setMinimumSize(new Dimension(SQUARE_CELL*9, SQUARE_CELL*9));
 		frame.setVisible(true);
 	}
+	
+	public void multiplayerGUI(){
+		JFrame mpFrame = new JFrame();
+		JPanel mpPanel = new JPanel();
+		JTable mpTable = new JTable(4, 1);
+		searchServers = new JButton("Search for Servers");
+		loading = new JLabel(new ImageIcon("resources/images/loading.gif"));
+		
+		mpTable.setRowHeight(30);
+		mpTable.getColumnModel().getColumn(0).setMinWidth(200);
+		
+		searchServers.addActionListener(this);
+		
+		mpPanel.setPreferredSize(new Dimension(250, 200));
+		
+		loading.setVisible(false);
+		
+		mpPanel.add(mpTable);
+		mpPanel.add(searchServers);
+		mpPanel.add(loading);
+		mpFrame.add(mpPanel);
+		mpFrame.pack();
+		mpFrame.setVisible(true);
+	}
+	
 	
 	public void updateBoard(){
 		for(int i = 0; i < chessBoard.chessBoard.length; i++)
@@ -139,12 +176,18 @@ public class GUI implements KeyListener {
 	@Override
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	public void actionPerformed(ActionEvent arg0) {
+		if(arg0.getSource().equals(multiplayer))
+			multiplayerGUI();
+		if(arg0.getSource().equals(searchServers))
+			loading.setVisible(true);
 	}
 }
