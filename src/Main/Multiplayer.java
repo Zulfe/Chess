@@ -27,26 +27,6 @@ public class Multiplayer implements ActionListener {
 	public static void broadcastGame(){
 		
 	}
-	
-	public void openGUI(){
-		frame = new JFrame();
-		panel = new JPanel();
-		table = new JTable(4, 1);
-		searchServers = new JButton("Search for Servers");
-		JLabel loading = new JLabel(new ImageIcon("resources/images/loading.gif"));
-		
-		table.setRowHeight(30);
-		table.getColumnModel().getColumn(0).setMinWidth(200);
-		
-		panel.setPreferredSize(new Dimension(250, 200));
-		
-		panel.add(table);
-		panel.add(searchServers);
-		panel.add(loading);
-		frame.add(panel);
-		frame.pack();
-		frame.setVisible(true);
-	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
