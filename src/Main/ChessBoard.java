@@ -25,6 +25,7 @@ public class ChessBoard {
 		coordinateMap.put('3', 5);
 		coordinateMap.put('2', 6);
 		coordinateMap.put('1', 7);
+		build();
 	}
 
 
